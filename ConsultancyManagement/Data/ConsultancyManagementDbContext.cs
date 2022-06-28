@@ -11,6 +11,7 @@ namespace ConsultancyManagement.Data
     {
         public DbSet<UserMaster> UserMasters { get; set; }
         public DbSet<RoleMaster> RoleMasters { get; set; }
+        public DbSet<Enquiry> Enquiries { get; set; }
 
 
         public ConsultancyManagementDbContext(DbContextOptions options) : base(options)
