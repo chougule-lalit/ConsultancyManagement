@@ -31,9 +31,9 @@ namespace ConsultancyManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ConsultancyManagementDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
+            //services.AddDbContext<ConsultancyManagementDbContext>(x => x.UseNpgsql(_configuration.GetConnectionString("PostgreSQL")));
 
-            //services.AddDbContext<ConsultancyManagementDbContext>(x => x.UseSqlServer(_configuration.GetConnectionString("SQLServer")));
+            services.AddDbContext<ConsultancyManagementDbContext>(x => x.UseSqlite(_configuration.GetConnectionString("SQLite")));
 
             services.AddTransient<IUserMasterAppService, UserMasterAppService>();
             services.AddTransient<IRoleMasterAppService, RoleMasterAppService>();
