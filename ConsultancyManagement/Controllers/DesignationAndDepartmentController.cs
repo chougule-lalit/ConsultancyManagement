@@ -49,6 +49,20 @@ namespace ConsultancyManagement.Controllers
             return _designationAndDepartmentAppService.DeleteDesignationAsync(id);
         }
 
+        [HttpPost]
+        [Route("fetchDepartmentList")]
+        public virtual Task<PagedResultDto<DepartmentDto>> FetchDepartmentListAsync(GetDesignationInputDto input)
+        {
+            return _designationAndDepartmentAppService.FetchDepartmentListAsync(input);
+        }
+
+        [HttpPost]
+        [Route("fetchDesignationList")]
+        public virtual Task<PagedResultDto<DesignationDto>> FetchDesignationListAsync(GetDesignationInputDto input)
+        {
+            return _designationAndDepartmentAppService.FetchDesignationListAsync(input);
+        }
+
         [HttpGet]
         [Route("getDepartment/{id}")]
         public virtual Task<DepartmentDto> GetDepartmentAsync(int id)

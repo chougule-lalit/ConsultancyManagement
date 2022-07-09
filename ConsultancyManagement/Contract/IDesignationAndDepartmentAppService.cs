@@ -16,5 +16,8 @@ namespace ConsultancyManagement.Contract
         Task DeleteDepartmentAsync(int id);
         Task<List<DepartmentDto>> GetDepartmentDropdownAsync();
         Task<List<DesignationDto>> GetDesignationDropdownAsync();
+        Task<PagedResultDto<DesignationDto>> FetchDesignationListAsync(GetDesignationInputDto input);
+        Task<PagedResultDto<DepartmentDto>> FetchDepartmentListAsync(GetDesignationInputDto input);
+
     }
 }
