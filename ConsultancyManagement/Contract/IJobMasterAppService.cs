@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsultancyManagement.Contract
 {
-    public interface IEnquiryAppService
+    public interface IJobMasterAppService
     {
-        Task CreateOrUpdate(EnquiryDto input);
-        Task<EnquiryDto> GetAsync(int id);
+        Task CreateOrUpdate(JobMasterDto input);
+        Task<JobMasterDto> GetAsync(int id);
         Task DeleteAsync(int id);
-        Task<PagedResultDto<EnquiryDto>> FetchEnquiryListAsync(GetEnquiryInputDto input);
-
+        Task<PagedResultDto<JobMasterDto>> FetchJobMasterListAsync(GetJobMasterInputDto input);
     }
 }

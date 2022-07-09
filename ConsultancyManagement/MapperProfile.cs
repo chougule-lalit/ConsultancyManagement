@@ -24,6 +24,18 @@ namespace ConsultancyManagement
 
             CreateMap<Enquiry, EnquiryDto>()
                 .ReverseMap();
+
+            CreateMap<Designation, DesignationDto>()
+                .ReverseMap();
+
+            CreateMap<Department, DepartmentDto>()
+                .ReverseMap();
+
+            CreateMap<CompanyMaster, CompanyMasterDto>()
+                .ReverseMap();
+
+            CreateMap<JobMaster, JobMasterDto>()
+                .ReverseMap();
         }
     }
 }

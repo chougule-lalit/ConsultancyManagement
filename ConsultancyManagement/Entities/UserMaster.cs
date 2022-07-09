@@ -22,5 +22,13 @@ namespace ConsultancyManagement.Entities
         public RoleMaster Role { get; set; }
         
         public int RoleId { get; set; }
+
+        public virtual Designation Designation { get; set; }
+
+        public virtual int DesignationId { get; set; }
+
+        public virtual Department Department { get; set; }
+
+        public virtual int DepartmentId { get; set; }
     }
 }
