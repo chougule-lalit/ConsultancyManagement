@@ -90,6 +90,7 @@ namespace ConsultancyManagement.Application
             if (user != null)
             {
                 _dbContext.UserMasters.Remove(user);
+                await _dbContext.SaveChangesAsync();
             }
         }
 

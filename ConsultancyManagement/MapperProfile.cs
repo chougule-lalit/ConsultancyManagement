@@ -21,6 +21,9 @@ namespace ConsultancyManagement
 
             CreateMap<RoleMaster, RoleMasterDto>()
                 .ReverseMap();
+
+            CreateMap<Enquiry, EnquiryDto>()
+                .ReverseMap();
         }
     }
 }

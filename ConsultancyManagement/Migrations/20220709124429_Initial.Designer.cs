@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultancyManagement.Migrations
 {
     [DbContext(typeof(ConsultancyManagementDbContext))]
-    [Migration("20220628152233_Initial")]
+    [Migration("20220709124429_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,32 @@ namespace ConsultancyManagement.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
+
+            modelBuilder.Entity("ConsultancyManagement.Entities.Enquiry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Enquiries");
+                });
 
             modelBuilder.Entity("ConsultancyManagement.Entities.RoleMaster", b =>
                 {

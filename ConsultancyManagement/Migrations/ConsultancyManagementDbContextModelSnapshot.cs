@@ -15,6 +15,32 @@ namespace ConsultancyManagement.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
 
+            modelBuilder.Entity("ConsultancyManagement.Entities.Enquiry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Enquiries");
+                });
+
             modelBuilder.Entity("ConsultancyManagement.Entities.RoleMaster", b =>
                 {
                     b.Property<int>("Id")
