@@ -46,6 +46,10 @@ namespace ConsultancyManagement.Contract.Dto
         public int RoleId { get; set; }
 
         public string Password { get; set; }
+
+        public virtual int DesignationId { get; set; }
+
+        public virtual int DepartmentId { get; set; }
     }
 
     public class GetUserInput

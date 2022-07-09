@@ -81,12 +81,28 @@ namespace ConsultancyManagement.Application
 
         public async Task<UserMasterDto> GetUserAsync(int id)
         {
-            var user = await _dbContext.UserMasters.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await (from u in _dbContext.UserMasters
+                               join r in _dbContext.RoleMasters on u.RoleId equals r.Id
+                               join d in _dbContext.Departments on u.DepartmentId equals d.Id
+                               join ds in _dbContext.Designations on u.DesignationId equals ds.Id
+                               select new
+                               {
+                                   User = u,
+                                   RoleName = r.Name,
+                                   DepartmentName = d.Name,
+                                   DesignationName = ds.Name
+                               }).FirstOrDefaultAsync();
 
             if (user == null)
                 return null;
 
-            return _mapper.Map<UserMasterDto>(user);
+            var returnData = _mapper.Map<UserMasterDto>(user.User);
+            returnData.RoleName = user.RoleName;
+            returnData.DepartmentName = user.DepartmentName;
+            returnData.DesignationName = user.DesignationName;
+
+
+            return returnData;
         }
 
         public async Task DeleteUserAsync(int id)
