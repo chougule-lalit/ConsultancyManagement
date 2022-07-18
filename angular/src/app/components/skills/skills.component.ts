@@ -12,7 +12,7 @@ import {SkillFormComponent} from './skill-form/skill-form.component';
   templateUrl: './skills.component.html'
 })
 export class SkillsComponent implements OnInit {
-  displayedColumns = ['id', 'userMasterId', 'name', 'experienceInMonths', 'actions'];
+  displayedColumns = ['id', 'name', 'experienceInMonths', 'actions'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -28,6 +28,7 @@ export class SkillsComponent implements OnInit {
     const input = {
       maxResultCount: 100,
       skipCount: 0,
+      userMasterId: JSON.parse(localStorage.getItem('user-details')!).id
     };
     this.commonService.postRequest('SkillMaster/fetchSkillMasterList', input).subscribe((result) => {
       console.log('Get Data : ', result);

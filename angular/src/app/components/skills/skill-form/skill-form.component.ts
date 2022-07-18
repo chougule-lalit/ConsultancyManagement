@@ -22,6 +22,7 @@ export class SkillFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUserList();
     this.form = this.fb.group({
       id: [null],
       name: ['', [Validators.required]],
@@ -44,11 +45,25 @@ export class SkillFormComponent implements OnInit {
     }
   }
 
+  getUserList(): void {
+    const input = {
+      maxResultCount: 100,
+      skipCount: 0,
+    };
+    this.commonService.fetchUserList(input).subscribe((result) => {
+      console.log('fetchUserList : ', result);
+      this.userHolder = result.items;
+    });
+  }
+
   get f() {
     return this.form.controls;
   }
 
   onSubmit(): void {
+    this.form.patchValue({
+      userMasterId: this.selectedUserMasterId
+    });
     console.log('Form Data : ', this.form.value);
     this.isSubmitted = true;
     if (this.form.invalid) {
@@ -61,9 +76,9 @@ export class SkillFormComponent implements OnInit {
 
   }
 
-  getUsers(){
+  /*getUsers(){
     this.commonService.getRequest('').subscribe((result) => {
       this.userHolder = result;
     })
-  }
+  }*/
 }

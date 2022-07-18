@@ -6,7 +6,7 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Select User<span class="req">*</span></mat-label>
         <mat-select matInput [(value)]="selectedUserMasterId">
-          <mat-option *ngFor="let item of userHolder" [value]="item.id">{{item.name}}</mat-option>
+          <mat-option *ngFor="let item of userHolder" [value]="item.id"><span class="text-capitalize">{{item.firstName}} {{item.lastName}}</span></mat-option>
         </mat-select>
       </mat-form-field>
       <mat-error *ngIf="isSubmitted && f.userMasterId.errors && f.userMasterId.errors.required">
