@@ -35,6 +35,8 @@ namespace ConsultancyManagement
                 .ReverseMap();
 
             CreateMap<JobMaster, JobMasterDto>()
+                .ForMember(dest => dest.CompanyName, opt => opt.Ignore())
+                .ForMember(dest => dest.DesignationName, opt => opt.Ignore())
                 .ReverseMap();
 
             CreateMap<SkillMaster, SkillMasterDto>()

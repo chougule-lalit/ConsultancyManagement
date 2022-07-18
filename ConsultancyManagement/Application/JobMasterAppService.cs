@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConsultancyManagement.Application
 {
-    public class JobMasterAppService: IJobMasterAppService
+    public class JobMasterAppService : IJobMasterAppService
     {
         private readonly ConsultancyManagementDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -65,7 +65,29 @@ namespace ConsultancyManagement.Application
 
         public async Task<PagedResultDto<JobMasterDto>> FetchJobMasterListAsync(GetJobMasterInputDto input)
         {
-            var data = await _dbContext.JobMasters.ToListAsync();
+            var dataQuerable = from c in _dbContext.CompanyMasters
+                               join j in _dbContext.JobMasters on c.Id equals j.CompanyMasterId
+                               join d in _dbContext.Designations on j.DesignationId equals d.Id
+                               select new JobMasterDto
+                               {
+                                   VacancyAvailable = j.VacancyAvailable,
+                                   CompanyMasterId = j.CompanyMasterId,
+                                   Id = j.Id,
+                                   Address1 = j.Address1,
+                                   Address2 = j.Address2,
+                                   CompanyName = c.Name,
+                                   DesignationId = j.DesignationId,
+                                   DesignationName = d.Name
+                               };
+
+            if (input.CompanyMasterId.HasValue)
+                dataQuerable = dataQuerable.Where(x => x.CompanyMasterId == input.CompanyMasterId);
+
+            if (input.DesignationId.HasValue)
+                dataQuerable = dataQuerable.Where(x => x.DesignationId == input.DesignationId);
+
+            var data = await dataQuerable.ToListAsync();
+
 
             var count = data.Count;
 
