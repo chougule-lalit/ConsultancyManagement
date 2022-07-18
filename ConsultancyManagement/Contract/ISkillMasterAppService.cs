@@ -12,5 +12,6 @@ namespace ConsultancyManagement.Contract
         Task<SkillMasterDto> GetAsync(int id);
         Task DeleteAsync(int id);
         Task<PagedResultDto<SkillMasterDto>> FetchSkillMasterListAsync(GetSkillMasterInputDto input);
+        Task<List<SkillMasterDropDownDto>> GetSkillDropdownAsync();
     }
 }

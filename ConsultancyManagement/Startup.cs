@@ -41,6 +41,7 @@ namespace ConsultancyManagement
             services.AddTransient<IDesignationAndDepartmentAppService, DesignationAndDepartmentAppService>();
             services.AddTransient<ICompanyMasterAppService, CompanyMasterAppService>();
             services.AddTransient<IJobMasterAppService, JobMasterAppService>();
+            services.AddTransient<ISkillMasterAppService, SkillMasterAppService>();
 
             services.AddCors(options =>
             {

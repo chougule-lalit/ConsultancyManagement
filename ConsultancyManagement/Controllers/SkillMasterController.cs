@@ -10,7 +10,7 @@ namespace ConsultancyManagement.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SkillMasterController
+    public class SkillMasterController : ISkillMasterAppService
     {
         private readonly ISkillMasterAppService _skillMasterAppService;
 
@@ -45,6 +45,13 @@ namespace ConsultancyManagement.Controllers
         public virtual Task<SkillMasterDto> GetAsync(int id)
         {
             return _skillMasterAppService.GetAsync(id);
+        }
+
+        [HttpGet]
+        [Route("getSkillDropdown")]
+        public virtual Task<List<SkillMasterDropDownDto>> GetSkillDropdownAsync()
+        {
+            return _skillMasterAppService.GetSkillDropdownAsync();
         }
     }
 }

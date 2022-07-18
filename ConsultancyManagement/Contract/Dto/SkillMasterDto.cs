@@ -9,12 +9,20 @@ namespace ConsultancyManagement.Contract.Dto
     {
         public int? Id { get; set; }
         public int UserMasterId { get; set; }
+        public string UserName { get; set; }
         public string Name { get; set; }
         public int ExperienceInMonths { get; set; }
     }
 
     public class GetSkillMasterInputDto : PagedResultInput
     {
+        public int? UserMasterId { get; set; }
+    }
 
+    public class SkillMasterDropDownDto
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
