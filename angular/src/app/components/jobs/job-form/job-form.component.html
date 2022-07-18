@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>{{mode}} Job</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <mat-form-field class="w-100"  appearance="outline">
+            <mat-label>Select Company<span class="req">*</span></mat-label>
+            <mat-select matInput [(value)]="selectedCompanyMasterId">
+              <mat-option *ngFor="let item of companyMasterHolder" [value]="item.id">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-error *ngIf="isSubmitted && f.companyMasterId.errors && f.companyMasterId.errors.required">
+            Company is required
+          </mat-error>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Select Designation<span class="req">*</span></mat-label>
+            <mat-select matInput [(value)]="selectedDesignationId">
+              <mat-option *ngFor="let item of designationHolder" [value]="item.id">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-error *ngIf="isSubmitted && f.designationId.errors && f.designationId.errors.required">
+            Designation is required
+          </mat-error>
+        </div>
+      </div>
+    </div>
+   
+    
+    <div class="mb-3">
+      <mat-form-field class="w-100"  appearance="outline">
+        <mat-label>Available Vacancy<span class="req">*</span></mat-label>
+        <input type="text" matInput formControlName="vacancyAvailable">
+      </mat-form-field>
+      <mat-error *ngIf="isSubmitted && f.vacancyAvailable.errors && f.vacancyAvailable.errors.required">
+        Available Vacancy is required
+      </mat-error>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="w-100"  appearance="outline">
+        <mat-label>Address1<span class="req">*</span></mat-label>
+        <input type="text" matInput formControlName="address1">
+      </mat-form-field>
+      <mat-error *ngIf="isSubmitted && f.address1.errors && f.address1.errors.required">
+        Address1 is required
+      </mat-error>
+    </div>
+    <div class="mb-3">
+      <mat-form-field class="w-100"  appearance="outline">
+        <mat-label>Address2<span class="req">*</span></mat-label>
+        <input type="text" matInput formControlName="address2">
+      </mat-form-field>
+      <mat-error *ngIf="isSubmitted && f.address2.errors && f.address2.errors.required">
+        Address2 is required
+      </mat-error>
+    </div>
+    <hr class="my-0">
+    <mat-card-actions align="end">
+      <button mat-button mat-raised-button mat-dialog-close >Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>

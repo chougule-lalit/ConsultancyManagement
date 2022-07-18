@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>{{mode}} Skill</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Select User<span class="req">*</span></mat-label>
+        <mat-select matInput [(value)]="selectedUserMasterId">
+          <mat-option *ngFor="let item of userHolder" [value]="item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error *ngIf="isSubmitted && f.userMasterId.errors && f.userMasterId.errors.required">
+        User is required
+      </mat-error>
+    </div>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="name">
+    </mat-form-field>
+    <mat-error *ngIf="isSubmitted && f.name.errors && f.name.errors.required">
+      Skill Name is required
+    </mat-error>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Experience In Months</mat-label>
+      <input type="text" matInput formControlName="experienceInMonths">
+    </mat-form-field>
+    <mat-error *ngIf="isSubmitted && f.experienceInMonths.errors && f.experienceInMonths.errors.required">
+      Experience In Months is required
+    </mat-error>
+
+    <hr class="mb-0 mt-3">
+    <mat-card-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>

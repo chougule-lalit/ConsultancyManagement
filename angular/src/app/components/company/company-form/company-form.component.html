@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{mode}} Company</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <br>
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+        </mat-form-field>
+        <mat-error *ngIf="isSubmitted && f.name.errors && f.name.errors.required">
+          Name is <strong>required</strong>
+        </mat-error>
+      </div>
+      <div class="col-sm-6">
+        <label>Active</label> <br>
+        <input type="checkbox" formControlName="active">
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12 mb-2">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Address1</mat-label>
+          <input type="text" matInput formControlName="address1">
+        </mat-form-field>
+        <mat-error *ngIf="isSubmitted && f.address1.errors && f.address1.errors.required">
+          Address1 is <strong>required</strong>
+        </mat-error>
+      </div>
+      <div class="col-sm-12 mb-2">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Address2</mat-label>
+          <input type="text" matInput formControlName="address2">
+        </mat-form-field>
+        <mat-error *ngIf="isSubmitted && f.address2.errors && f.address2.errors.required">
+          Address2 is <strong>required</strong>
+        </mat-error>
+      </div>
+    </div>
+    <hr class="my-0">
+    <mat-card-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+  </form>
+</div>
